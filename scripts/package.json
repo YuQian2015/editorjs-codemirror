@@ -1,0 +1,23 @@
+{
+  "name": "editorjs-codemirror",
+  "version": "0.1.1",
+  "description": "CodeMirror Tool for Editor.js",
+  "main": "dist/editorjs-codemirror.umd.js",
+  "module": "dist/editorjs-codemirror.esm.js",
+  "keywords": [
+    "codex editor",
+    "code",
+    "tool",
+    "editor.js",
+    "editorjs"
+  ],
+  "author": {
+    "name": "YuQian",
+    "email": "yuqian.124@gmail.com"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/YuQian2015/editorjs-codemirror",
+  "dependencies": {
+    "codemirror": "^5.65.0"
+  }
+}
