@@ -9,7 +9,7 @@ CodeMirror for the [Editor.js](https://ifmo.su/editor) allows to include code ex
 ### Install via NPM
 
 ```shell
-$ npm install editorjs-codemirror
+$ npm install codemirror editorjs-codemirror
 ```
 
 ### Load from CDN
@@ -24,25 +24,83 @@ Require this script on a page with Editor.js.
 
 Add a new Tool to the `tools` property of the Editor.js initial config.
 
-```
+```javascript
+import 'codemirror/mode/markdown/markdown'
+import 'codemirror/mode/python/python'
+import 'codemirror/mode/dockerfile/dockerfile'
+import 'codemirror/mode/php/php'
+import 'codemirror/mode/sass/sass'
+import 'codemirror/mode/sql/sql'
+import 'codemirror/mode/swift/swift'
+
+import 'codemirror/theme/dracula.css'
+
 var editor = EditorJS({
-  ...
-  
   tools: {
-    ...
-    code: CodeMirror,
+    // ...
+    codeMirror: {
+        class: CodeMirror,
+        config: {
+            languages: [
+                {
+                    name: 'MarkDown',
+                    mode: "text/x-markdown"
+                }, {
+                    name: 'Python',
+                    mode: "text/x-python"
+                }, {
+                    name: 'PHP',
+                    mode: "application/x-httpd-php"
+                }, {
+                    name: 'SASS',
+                    mode: "text/x-sass"
+                }, {
+                    name: 'Swift',
+                    mode: "text/x-swift"
+                }, {
+                    name: 'XML',
+                    mode: "application/xml"
+                }
+            ],
+            codeMirrorConfig: {
+                tabSize: 4,
+                styleActiveLine: { nonEmpty: true },
+                styleActiveSelected: true,
+                lineNumbers: true,
+                line: false,
+                foldGutter: true,
+                autofocus: false,
+                styleSelectedText: true,
+                matchBrackets: true,
+                showCursorWhenSelecting: true,
+                theme: 'dracula',
+                autoCloseTags: true,
+                dragDrop: true,
+                lint: true,
+                extraKeys: { 'Ctrl': 'autocomplete' },
+                hintOptions: {
+                    completeSingle: false
+                },
+            }
+        }
+    },
   }
-  
-  ...
 });
 ```
 
 ## Config
 
-
+| Field            | Type   | Description                              |
+| ---------------- | ------ | ---------------------------------------- |
+| languages        | Array  | Customize additional supported languages |
+| codeMirrorConfig | Object | CodeMirror config                        |
 
 ## Output data
 
-```
-
+```javascript
+{
+    mode: "text/css"
+    name: "CSS"
+    text: "body&nbsp;{\n&nbsp;&nbsp;padding:&nbsp;0\n}"
+}
 ```
