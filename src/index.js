@@ -3,16 +3,11 @@ import { default as CM } from 'codemirror/lib/codemirror'
 import 'codemirror/mode/javascript/javascript'
 import 'codemirror/mode/css/css'
 import 'codemirror/mode/xml/xml'
-import 'codemirror/mode/shell/shell'
 import 'codemirror/mode/htmlmixed/htmlmixed'
-
-import 'codemirror/mode/vue/vue'
-import 'codemirror/mode/jsx/jsx'
 
 // addons
 import 'codemirror/addon/edit/matchbrackets' // 引入括号匹配
 import 'codemirror/addon/edit/closetag' // 自动关闭标签
-
 
 // import 'codemirror/addon/lint/lint'
 // import 'codemirror/addon/lint/javascript-lint'
@@ -32,7 +27,6 @@ import 'codemirror/keymap/sublime' // 键盘绑定
 
 // 主题和皮肤
 import 'codemirror/lib/codemirror.css'
-import 'codemirror/theme/idea.css'
 
 // 全屏模式
 // import 'codemirror/addon/display/fullscreen'
@@ -111,22 +105,12 @@ export default class CodeMirror {
             }, {
                 name: 'CSS',
                 mode: "text/css"
-            }, {
-                name: 'Shell',
-                mode: "application/x-sh"
-            }, {
-                name: 'JSX',
-                mode: "text/typescript-jsx"
-            }, {
-                name: 'Vue',
-                mode: "text/x-vue"
             }],
             codeMirrorConfig: {
                 // mode: { name: "javascript", globalVars: true },
                 lineNumbers: true,
                 matchBrackets: true, // 括号匹配
                 autoCloseTags: true,
-                theme: "idea",
                 tabSize: 2,
                 keyMap: "sublime", // sublime 键盘绑定
                 // fullScreen:true, //全屏模式
