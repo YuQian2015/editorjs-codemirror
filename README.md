@@ -2,100 +2,144 @@
 
 # CodeMirror Tool for Editor.js
 
-CodeMirror for the [Editor.js](https://ifmo.su/editor) allows to include code examples in your articles.
+CodeMirror Tool for the [Editor.js](https://ifmo.su/editor) allows to include code examples in your articles.
 
 ## Installation
 
 ### Install via NPM
 
+Get the package
+
 ```shell
-$ npm install codemirror editorjs-codemirror
+# npm
+$ npm install editorjs-codemirror
+
+# yarn
+$ yarn add editorjs-codemirror
 ```
 
-### Load from CDN
+Include module at your application
 
-Require this script on a page with Editor.js.
-
-```
-<script src="..."></script>
+```javascript
+import CodeMirror from 'editorjs-codemirror'
 ```
 
 ## Usage
 
-Add a new Tool to the `tools` property of the Editor.js initial config.
+Add the CodeMirror Tool to the `tools` property of the Editor.js initial config.
 
 ```javascript
-import 'codemirror/mode/markdown/markdown'
-import 'codemirror/mode/python/python'
-import 'codemirror/mode/dockerfile/dockerfile'
-import 'codemirror/mode/php/php'
-import 'codemirror/mode/sass/sass'
-import 'codemirror/mode/sql/sql'
-import 'codemirror/mode/swift/swift'
+import EditorJS from '@editorjs/editorjs'
+import CodeMirror from 'editorjs-codemirror'
 
-import 'codemirror/theme/dracula.css'
-
-var editor = EditorJS({
-  tools: {
+export const tools = {
     // ...
-    codeMirror: {
-        class: CodeMirror,
-        config: {
-            languages: [
-                {
-                    name: 'MarkDown',
-                    mode: "text/x-markdown"
-                }, {
-                    name: 'Python',
-                    mode: "text/x-python"
-                }, {
-                    name: 'PHP',
-                    mode: "application/x-httpd-php"
-                }, {
-                    name: 'SASS',
-                    mode: "text/x-sass"
-                }, {
-                    name: 'Swift',
-                    mode: "text/x-swift"
-                }, {
-                    name: 'XML',
-                    mode: "application/xml"
-                }
-            ],
-            codeMirrorConfig: {
-                tabSize: 4,
-                styleActiveLine: { nonEmpty: true },
-                styleActiveSelected: true,
-                lineNumbers: true,
-                line: false,
-                foldGutter: true,
-                autofocus: false,
-                styleSelectedText: true,
-                matchBrackets: true,
-                showCursorWhenSelecting: true,
-                theme: 'dracula',
-                autoCloseTags: true,
-                dragDrop: true,
-                lint: true,
-                extraKeys: { 'Ctrl': 'autocomplete' },
-                hintOptions: {
-                    completeSingle: false
-                },
-            }
-        }
-    },
-  }
-});
+    code: CodeMirror
+    // ...
+}
 ```
 
-## Config
+## Default config
+
+Default supported languages: `Javascript` / `HTML` / `CSS`
+
+```javascript
+{
+    languages: [{
+        name: 'Javascript',
+        mode: "text/javascript"
+    }, {
+        name: 'HTML',
+        mode: "text/html"
+    }, {
+        name: 'CSS',
+        mode: "text/css"
+    }],
+    codeMirrorConfig: {
+        lineNumbers: true,
+        matchBrackets: true,
+        autoCloseTags: true,
+        tabSize: 2,
+        keyMap: "sublime",
+    }
+}
+```
+
+## Config Params
 
 | Field            | Type   | Description                              |
 | ---------------- | ------ | ---------------------------------------- |
 | languages        | Array  | Customize additional supported languages |
 | codeMirrorConfig | Object | CodeMirror config                        |
 
+### Code example
+
+Install codemirror:
+
+```shell
+$ npm install codemirror
+```
+
+import mode or theme from codemirror package:
+
+```javascript
+import CodeMirror from 'editorjs-codemirror';
+
+import 'codemirror/mode/shell/shell'
+import 'codemirror/mode/vue/vue'
+import 'codemirror/mode/jsx/jsx'
+import 'codemirror/mode/markdown/markdown'
+import 'codemirror/mode/sass/sass'
+
+import 'codemirror/theme/idea.css'
+
+export const tools = {
+    codeMirror: {
+        class: CodeMirror,
+        config: {
+            languages: [
+                {
+                    name: 'Shell',
+                    mode: "application/x-sh"
+                }, {
+                    name: 'JSX',
+                    mode: "text/typescript-jsx"
+                }, {
+                    name: 'Vue',
+                    mode: "text/x-vue"
+                }, {
+                    name: 'MarkDown',
+                    mode: "text/x-markdown"
+                }, {
+                    name: 'SASS',
+                    mode: "text/x-sass"
+                }
+            ],
+            codeMirrorConfig: {
+                tabSize: 4,
+                styleActiveLine: { nonEmpty: true },
+                styleActiveSelected: true,
+                line: false,
+                foldGutter: true,
+                autofocus: false,
+                styleSelectedText: true,
+                showCursorWhenSelecting: true,
+                dragDrop: true,
+                lint: true,
+                theme: 'idea',
+                extraKeys: { 'Ctrl': 'autocomplete' },
+                hintOptions: {
+                    completeSingle: false
+                },
+            }
+        }
+    }
+}
+```
+
 ## Output data
+
+CSS mode output
 
 ```javascript
 {
@@ -104,3 +148,4 @@ var editor = EditorJS({
     text: "body&nbsp;{\n&nbsp;&nbsp;padding:&nbsp;0\n}"
 }
 ```
+
