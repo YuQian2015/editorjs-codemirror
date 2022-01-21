@@ -11,19 +11,21 @@ import pkg from './package.json';
 
 export default {
     input: 'src/index.js',
-    output: [{
-        file: pkg.main,
-        format: 'umd',
-        name: 'CodeMirror',
-        sourcemap: false,
-    }, {
-        file: pkg.module,
-        format: 'es',
-        sourcemap: false
-    }],
+    output: [
+        // {
+        //     file: pkg.main,
+        //     format: 'umd',
+        //     name: 'CodeMirror',
+        //     sourcemap: false,
+        // },
+        {
+            file: pkg.module,
+            format: 'es',
+            sourcemap: false
+        }],
     plugins: [
         uglify(),
-        resolve(),
+        // resolve(),
         babel({ babelHelpers: 'bundled' }),
         // css(),
         // less({ insert: true }),

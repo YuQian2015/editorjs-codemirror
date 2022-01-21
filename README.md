@@ -12,10 +12,10 @@ Get the package
 
 ```shell
 # npm
-$ npm install editorjs-codemirror
+$ npm install codemirror editorjs-codemirror
 
 # yarn
-$ yarn add editorjs-codemirror
+$ yarn add codemirror editorjs-codemirror
 ```
 
 Include module at your application
@@ -73,12 +73,6 @@ Default supported languages: `Javascript` / `HTML` / `CSS`
 | codeMirrorConfig | Object | CodeMirror config                        |
 
 ### Code example
-
-Install codemirror:
-
-```shell
-$ npm install codemirror
-```
 
 import mode or theme from codemirror package:
 
